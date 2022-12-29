@@ -1,0 +1,21 @@
+Docker kurulumunu yaptıktan sonra, servisin çalıştırılacağı kapsayıcıyı oluşturmak için bir Dockerfile oluşturduk. Bu dosya, kapsayıcının oluşturulması sırasında çalıştırılacak komutları içerir. Örneğin, aşağıdaki Dockerfile, Ubuntu tabanlı bir kapsayıcı oluşturur ve orada Python 3.9 yükler:
+
+
+RUN apt-get update && apt-get install -y python3.9
+
+Dockerfile'ı kullanarak kapsayıcıyı oluşturduk. Bu, aşağıdaki komutu kullanarak yapılabilir:
+
+docker build -t my-service .
+
+Bu komut, "my-service" adıyla bir kapsayıcı oluşturur ve Dockerfile'ın bulunduğu dizinde çalıştırılır.
+Servisi çalıştırmak için kapsayıcıyı çalıştırdık. Örneğin, aşağıdaki komut ile kapsayıcıyı çalıştırabiliriz :
+
+docker run -it my-service
+
+Bu komut, "my-service" adıyla oluşturulmuş kapsayıcıyı çalıştırır ve terminali kapsayıcıya bağlar. Bu sayede, kapsayıcı içinde terminal komutları çalıştırabiliriz.
+
+Docker üzerinden çalışan bir servisi yayınlamak için, kapsayıcıyı özel bir porta bağlamamız ve bu portu dışarı açmamız gerekir. Örneğin, aşağıdaki komut ile kapsayıcıyı 8000 numaralı porta bağlayabiliriz:
+
+docker run -p 8000:8000 my-service
+
+Bu sayede, 8000 numaralı porttan kapsayıcıya erişilebiliyoruz.
